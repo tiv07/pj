@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>โปรไฟล์ของฉัน - Hotel Booking</title>
+</head>
+<body>
+<h1>ข้อมูลโปรไฟล์ของฉัน</h1>
+
+<div>
+  <p><strong>ชื่อผู้ใช้:</strong> <span th:text="${user.username}">ชื่อผู้ใช้</span></p>
+  <p><strong>อีเมล:</strong> <span th:text="${user.email}">อีเมล</span></p>
+</div>
+
+<h2>ประวัติการจองห้องพัก</h2>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>โรงแรม</th>
+    <th>วันที่เช็คอิน</th>
+    <th>วันที่เช็คเอาต์</th>
+    <th>ประเภทห้อง</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="booking : ${bookings}">
+    <td th:text="${booking.hotel.name}">ชื่อโรงแรม</td>
+    <td th:text="${booking.checkInDate}">วันที่เช็คอิน</td>
+    <td th:text="${booking.checkOutDate}">วันที่เช็คเอาต์</td>
+    <td th:text="${booking.room.roomType}">ประเภทห้อง</td>
+  </tr>
+  </tbody>
+</table>
+
+<p><a th:href="@{/hotels}">กลับไปเลือกโรงแรม</a></p>
+</body>
+</html>

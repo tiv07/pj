@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ยืนยันการจอง - Hotel Booking</title>
+</head>
+<body>
+<h1>ยืนยันการจองห้องพัก</h1>
+
+<form th:action="@{/bookings}" method="post">
+  <input type="hidden" name="hotelId" th:value="${hotelId}" />
+
+  <div>
+    <label for="checkInDate">วันที่เช็คอิน:</label>
+    <input type="date" id="checkInDate" name="checkInDate" required>
+  </div>
+
+  <div>
+    <label for="checkOutDate">วันที่เช็คเอาต์:</label>
+    <input type="date" id="checkOutDate" name="checkOutDate" required>
+  </div>
+
+  <div>
+    <label for="roomType">ประเภทห้อง:</label>
+    <select id="roomType" name="roomType" required>
+      <option value="standard">Standard</option>
+      <option value="deluxe">Deluxe</option>
+      <option value="suite">Suite</option>
+    </select>
+  </div>
+
+  <div>
+    <button type="submit">ยืนยันการจองและชำระเงิน</button>
+  </div>
+</form>
+
+<p><a th:href="@{/hotels}">กลับไปหน้าเลือกโรงแรม</a></p>
+</body>
+</html>

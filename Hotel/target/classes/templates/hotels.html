@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>โรงแรมที่มีให้เลือก - Hotel Booking</title>
+</head>
+<body>
+<h1>เลือกโรงแรม</h1>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>ชื่อโรงแรม</th>
+    <th>ที่อยู่</th>
+    <th>คะแนนรีวิว</th>
+    <th>รายละเอียด</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="hotel : ${hotels}">
+    <td th:text="${hotel.name}">ชื่อโรงแรม</td>
+    <td th:text="${hotel.address}">ที่อยู่</td>
+    <td th:text="${hotel.averageRating}">คะแนนรีวิว</td>
+    <td>
+      <form th:action="@{/bookings}" method="get">
+        <input type="hidden" name="hotelId" th:value="${hotel.id}" />
+        <button type="submit">จองห้องพัก</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<p><a th:href="@{/profile}">ไปที่โปรไฟล์ของฉัน</a></p>
+</body>
+</html>
